@@ -1,10 +1,11 @@
 var Promise = (function () {
-    function Promise(resolver) {
+    
+    // 如果存在Promise对象则返回
+    if (typeof window.Promise === 'function') {
+        return window.Promise;
+    }
 
-        // 如果存在Promise对象则返回
-        if (typeof window.Promise === 'function') {
-            return window.Promise;
-        }
+    function Promise(resolver) {
 
         // 如果传入的参数不是函数提示出错
         if (typeof resolver !== 'function') {
